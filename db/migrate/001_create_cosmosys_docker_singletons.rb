@@ -33,5 +33,14 @@ class CreateCosmosysDockerSingletons < ActiveRecord::Migration[5.2]
      s = Setting.find_by_name("enabled_scm")
      s.value = "---\n- Git\n"
      s.save
+
+     if (Enumeration.where(:type => "IssuePriority").size == 0) then
+       prio = Enumeration.new
+       prio.type = "IssuePriority"
+       prio.name = "Low"
+       prio.is_default = true
+       prio.save
+     end
+
   end
 end
