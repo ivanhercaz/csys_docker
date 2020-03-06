@@ -42,5 +42,19 @@ class CreateCosmosysDockerSingletons < ActiveRecord::Migration[5.2]
        prio.save
      end
 
+     ### Additionals plugin config ###
+     s = Setting.find_by_name("plugin_additionals")
+     sv = s.value
+     sv[:global_footer] = "(c) 2019 cosmoBots.eu"
+     sv[:global_sidebar] = "![cosmoBots](http://cosmobots.eu/attachments/download/99/Safe-Zone-CosmoBots-Monochrome%20-transparent-Small.png)"
+     sv[:external_urls] = "1"
+     sv[:add_go_to_top] = "1"
+     sv[:new_ticket_message] = "Don't forget to define the rationale sentence!"
+     sv[:issue_change_status_in_sidebar] = "1"
+     sv[:project_overview_content] = "In this overview page you can see the complete hierarchy and dependence diagrams of the project."
+     sv[:disabled_modules] = ["", "time_tracking", "news", "files", "boards", "calendar", "gantt"]
+     s.value = sv
+     s.save
+
   end
 end
