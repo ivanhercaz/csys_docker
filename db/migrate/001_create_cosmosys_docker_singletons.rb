@@ -4,33 +4,73 @@ class CreateCosmosysDockerSingletons < ActiveRecord::Migration[5.2]
 #      t.string :name
 #    end
      s = Setting.find_by_name("app_title")
+     if (s == nil) then
+       s = Setting.new
+       s.name="app_title"
+     end
      s.value = "cosmoSys-Req"
      s.save
      s = Setting.find_by_name("rest_api_enabled")
+     if (s == nil) then
+       s = Setting.new
+       s.name="rest_api_enabled"
+     end
      s.value = 1
      s.save
      s = Setting.find_by_name("jsonp_enabled")
+     if (s == nil) then
+       s = Setting.new
+       s.name="jsonp_enabled"
+     end
      s.value = 1
      s.save
      s = Setting.find_by_name("welcome_text")
+     if (s == nil) then
+       s = Setting.new
+       s.name="welcome_text"
+     end
      s.value = "cosmoSys-Req requirements management tool by cosmoBots.eu"
      s.save
      s = Setting.find_by_name("text_formatting")
+     if (s == nil) then
+       s = Setting.new
+       s.name="text_formatting"
+     end
      s.value = "markdown"
      s.save
      s = Setting.find_by_name("ui_theme")
+     if (s == nil) then
+       s = Setting.new
+       s.name="ui_theme"
+     end
      s.value = "a1"
      s.save
      s = Setting.find_by_name("default_language")
+     if (s == nil) then
+       s = Setting.new
+       s.name="default_language"
+     end
      s.value = "en"
      s.save
      s = Setting.find_by_name("force_default_language_for_anonymous")
+     if (s == nil) then
+       s = Setting.new
+       s.name="force_default_language_for_anonymous"
+     end
      s.value = 1
      s.save
      s = Setting.find_by_name("force_default_language_for_loggedin")
+     if (s == nil) then
+       s = Setting.new
+       s.name="force_default_language_for_loggedin"
+     end
      s.value = 1  
      s.save
      s = Setting.find_by_name("enabled_scm")
+     if (s == nil) then
+       s = Setting.new
+       s.name="enabled_scm"
+     end
      s.value = "---\n- Git\n"
      s.save
 
