@@ -1,6 +1,6 @@
-class CreateCosmosysDockerSingletons < ActiveRecord::Migration[5.2]
+class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
   def change
-#    create_table :cosmosys_docker_singletons do |t|
+#    create_table :csys_docker_singletons do |t|
 #      t.string :name
 #    end
      s = Setting.find_by_name("app_title")
@@ -8,7 +8,7 @@ class CreateCosmosysDockerSingletons < ActiveRecord::Migration[5.2]
        s = Setting.new
        s.name="app_title"
      end
-     s.value = "cosmoSys-Req"
+     s.value = "cosmoSys"
      s.save
      s = Setting.find_by_name("rest_api_enabled")
      if (s == nil) then
@@ -29,7 +29,7 @@ class CreateCosmosysDockerSingletons < ActiveRecord::Migration[5.2]
        s = Setting.new
        s.name="welcome_text"
      end
-     s.value = "cosmoSys-Req requirements management tool by cosmoBots.eu"
+     s.value = "cosmoSys project management tool by cosmoBots.eu"
      s.save
      s = Setting.find_by_name("text_formatting")
      if (s == nil) then
