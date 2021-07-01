@@ -5,4 +5,5 @@ Redmine::Plugin.register :csys_docker do
   version '0.0.1'
   url 'http://github.com/cosmoBots/csys_docker'
   author_url 'http://cosmobots.eu'
+  requires_redmine_plugin :cosmosys_rm #, :version_or_higher => '0.7.3'
 end
