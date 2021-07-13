@@ -71,7 +71,7 @@ class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
        s = Setting.new
        s.name="enabled_scm"
      end
-     s.value = "---\n- Git\n"
+     s.value = ["Git"]
      s.save
 
      ### Additionals plugin config ###
