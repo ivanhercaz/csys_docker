@@ -87,6 +87,10 @@ class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
     s.value = sv
     s.save
 
+
+    # Nota, aunque parezca replicado no lo podemos quitar de momento 
+    # si acaso hay que trasladarla al cosmosys_git
+
     s = Setting.find_by_name("plugin_cosmosys_git")
     if (s == nil) then
       s = Setting.new
@@ -99,14 +103,14 @@ class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
       "repo_template_id" => "template",
       "repo_redmine_sync" => true,
       "repo_redmine_path" => "/home/redmine/gitbase/csys_rm/%project_id%.git",
-      "import_path" => "01_importing/csysImport.ods",
-      "import_template_path" => "01_importing/csImportTemplate.ods",
-      "export_path" => "02_exporting/csysExport.ods",
+      "import_path" => "01_importing/csys%project_code%.ods",
+      "export_path" => "02_exporting/csys%project_code%.ods",
       "export_template_path" => "02_exporting/csExportTemplate.ods",
       "reporting_template_path" => "03_reporting/01_templates",
       "reporting_path" => "03_reporting/02_doc",
-      "reporting_img_path" => "03_reporting/03_img"
+      "reporting_img_path" => "03_reporting/03_img"      
     }
     s.save
+
   end
 end
