@@ -97,18 +97,16 @@ class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
       s.name = "plugin_cosmosys_git"
     end
     s.value = {
-      "repo_server_sync"=> true, 
       "repo_local_path"=>"/home/redmine/gitbase/csys/%project_id%", 
       "repo_server_path"=>"ssh://git@gitlab/cosmobots/%project_id%.git",
       "repo_template_id" => "template",
-      "repo_redmine_sync" => true,
       "repo_redmine_path" => "/home/redmine/gitbase/csys_rm/%project_id%.git",
       "import_path" => "01_importing/csys%project_code%.ods",
       "export_path" => "02_exporting/csys%project_code%.ods",
       "export_template_path" => "02_exporting/csExportTemplate.ods",
       "reporting_template_path" => "03_reporting/01_templates",
       "reporting_path" => "03_reporting/02_doc",
-      "reporting_img_path" => "03_reporting/03_img"      
+      "reporting_img_path" => "03_reporting/03_img"   
     }
     s.save
 
