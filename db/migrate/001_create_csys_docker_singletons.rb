@@ -76,6 +76,14 @@ class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
 
     ### Additionals plugin config ###
     s = Setting.find_by_name("plugin_additionals")
+    if s == nil then
+      # In order to be able to populate the plugin additionals settings, let's do this hack.
+      default_settings = Additionals.loader.default_settings
+      s = Setting.new
+      s.name = "plugin_additionals"
+      s.value = default_settings
+      s.save
+    end
     sv = s.value
     sv[:global_footer] = "(c) 2019 cosmoBots.eu"
     sv[:global_sidebar] = "![cosmoBots](http://cosmobots.eu/attachments/download/99/Safe-Zone-CosmoBots-Monochrome%20-transparent-Small.png)"
