@@ -121,9 +121,20 @@ class CreateCsysDockerSingletons < ActiveRecord::Migration[5.2]
   end
 
   def repo_server_path()
-    if ENV["COSMOSYS_GIT_USER"]
-      user = ENV["COSMOSYS_GIT_USER"]
+    cosmosys_git_variables = {
+      user: ENV["COSMOSYS_GIT_USER"],
+      instance: ENV["GITLAB_INSTANCE_URL"]
+    }
+
+    case cosmosys_git_variables
+    in { user: String => user, instance: nil }
       "ssh://git@gitlab/#{user}/%project_id%.git"
+    in { user: nil, instance: String => instance }
+      "ssh://git@#{instance}/cosmobots/%project_id%.git"
+    in { user: String => user, instance: String => instance}
+      "ssh://git@#{instance}/#{user}/%project_id%.git"
+    in { user: nil, instance: nil }
+      "ssh://git@gitlab/cosmobots/%project_id%.git"
     else
       "ssh://git@gitlab/cosmobots/%project_id%.git"
     end
